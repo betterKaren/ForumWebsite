@@ -1,0 +1,26 @@
+<h2>Popular Posts Testing</h2>
+<ul class="posts">
+  <li *ngFor="let post of posts"
+      [class.selected]="post === selectedPost"
+      (click)="onSelect(post)">
+    <span class="badge">{{post.id}}</span> {{post.content}}
+  </li>
+</ul>
+
+<div *ngIf="selectedPost">
+
+  <h2>{{selectedPost.content | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedPost.id}}</div>
+  <div>
+    <label>contents
+      <input [(ngModel)]="selectedPost.content" placeholder="name"/>
+    </label>
+    <label>likes
+      <input [(ngModel)]="selectedPost.likes" placeholder="name"/>
+    </label>
+    <label>comments
+      <input [(ngModel)]="selectedPost.comments" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
