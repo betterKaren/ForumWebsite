@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule} from "@angular/forms";
 
 import { MainPageComponent } from './main-page.component';
-import { PostsComponent } from "../../posts/posts.component";
 
 // import { HomeRoutingModule } from './home-routing.module';
 
@@ -14,8 +13,7 @@ import { PostsComponent } from "../../posts/posts.component";
     // HomeRoutingModule
   ],
   declarations: [
-    MainPageComponent,
-    PostsComponent
+    MainPageComponent
   ],
   providers: [
     // HomeAuthResolver
