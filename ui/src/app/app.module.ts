@@ -7,13 +7,17 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostsComponent } from './posts/posts.component';
 import {FormsModule} from "@angular/forms";
+import { SharePageComponent } from './pages/share-page/share-page.component';
+import { PostsPageComponent } from './pages/posts-page/posts-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     HeaderComponent,
-    PostsComponent
+    PostsComponent,
+    SharePageComponent,
+    PostsPageComponent
   ],
   imports: [
     BrowserModule,
