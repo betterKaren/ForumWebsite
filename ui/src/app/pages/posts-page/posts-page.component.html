@@ -1,1 +1,55 @@
-<p>posts-page works!</p>
+<div class="app-posts-page">
+  <div class="row justify-content-md-center">
+    <h5>All Posts</h5>
+  </div>
+  <div class="container align-content-center">
+    <div *ngFor="let post of posts"
+         [class.selected]="post === selectedPost"
+         (click)="onSelect(post)">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content}}</p>
+          <p class="card-text">{{post.likes}} likes
+            <a href="#" class="card-link">
+            <span style="color: #ee5850;">
+              <span style="font-size: 1.5rem;">
+            <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
+              </span>
+            </span>
+            </a>
+          </p>
+          <p class="card-text">{{post.comments}} comments
+            <a href="#" class="card-link">
+            <span style="color: #62beee;">
+              <span style="font-size: 1.5rem;">
+            <fa-icon [icon]="['far', 'comment-alt']"></fa-icon>
+              </span>
+            </span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container align-content-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
