@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Post } from "../../posts/post";
 
 @Component({
   selector: 'app-share-page',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./share-page.component.css']
 })
 export class SharePageComponent implements OnInit {
-
+  // post: Post = {
+  //   title: "hi",
+  //   content: "test post"
+  // };
   constructor() {}
 
   ngOnInit() {
   }
+
 
 }

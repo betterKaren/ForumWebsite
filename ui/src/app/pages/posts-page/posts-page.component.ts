@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { POSTS } from '../../posts/mock-posts';
-import {Post} from "../../posts/post";
+import { Post } from "../../posts/post";
 
 
 @Component({

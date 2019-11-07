@@ -1,6 +1,6 @@
 <div class="app-posts-page">
   <div class="row justify-content-md-center">
-    <h5>All Posts</h5>
+    <h5 style="padding-top: 15px">All Posts</h5>
   </div>
   <div class="container align-content-center">
     <div *ngFor="let post of posts"
@@ -9,25 +9,28 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{post.title}}</h5>
-          <p class="card-text">{{post.content}}</p>
-          <p class="card-text">{{post.likes}} likes
-            <a href="#" class="card-link">
-            <span style="color: #ee5850;">
-              <span style="font-size: 1.5rem;">
-            <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
+          <div *ngIf="selectedPost && post.title === selectedPost.title">
+            <h6>{{selectedPost.content}}</h6>
+          </div>
+          <span class="card-text">{{post.likes}} likes
+<!--            <a href="#" class="card-link">-->
+            <span style="color: #ee4049;">
+              <span style="font-size: 20px;">
+                <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
               </span>
             </span>
-            </a>
-          </p>
-          <p class="card-text">{{post.comments}} comments
-            <a href="#" class="card-link">
+<!--            </a>-->
+          </span>
+          <br>
+          <span>{{post.comments}} comments
+<!--            <a href="#" class="card-link">-->
             <span style="color: #62beee;">
-              <span style="font-size: 1.5rem;">
-            <fa-icon [icon]="['far', 'comment-alt']"></fa-icon>
+              <span style="font-size: 20px;">
+              <fa-icon [icon]="['far', 'comment-alt']"></fa-icon>
               </span>
             </span>
-            </a>
-          </p>
+<!--            </a>-->
+          </span>
         </div>
       </div>
     </div>
