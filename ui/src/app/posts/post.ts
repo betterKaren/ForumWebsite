@@ -1,6 +1,9 @@
 export class Post {
-  title: string;
-  content: string;
-  likes: number;
-  comments: number;
+  UserName: string;
+  Title: string;
+  Content: string;
+  PostTime: string;
+  LikeNo: number;
+  DislikeNo: number;
+  CommentNo: number;
 }

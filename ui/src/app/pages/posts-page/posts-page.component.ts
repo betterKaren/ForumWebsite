@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { POSTS } from '../../posts/mock-posts';
 import { Post } from "../../posts/post";
-
+import { PostService } from "../../posts/post.service";
 
 @Component({
   selector: 'app-posts-page',
@@ -9,11 +8,16 @@ import { Post } from "../../posts/post";
   styleUrls: ['./posts-page.component.css']
 })
 export class PostsPageComponent implements OnInit {
-  posts = POSTS;
+  // posts = PostService;
   selectedPost : Post;
-  constructor() { }
+  posts : Post[];
+  constructor(private postService : PostService) { }
 
   ngOnInit() {
+    this.postService.readPosts().subscribe((posts: Post[])=> {
+      this.posts = posts;
+      console.log(this.posts);
+    })
   }
 
   onSelect(post: Post): void {

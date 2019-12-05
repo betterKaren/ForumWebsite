@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Post } from './post';
-import { POSTS } from './mock-posts';
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  constructor(private http : HttpClient) { }
 
-  constructor() { }
+  // submitPost(post) {
+  //   return this.http.post(`${this.url}addData.php`, JSON.stringify(post));
+  // }
 
-  getPosts(): Observable<Post[]> {
-    return of (POSTS);
+  readPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.PHP_API_SERVER}/read.php`);
   }
+
+  PHP_API_SERVER = "http://127.0.0.1:8000";
 }

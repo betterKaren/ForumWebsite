@@ -1,4 +1,4 @@
-use forumData;
+-- use forumData;
 -- put data into Posts
 -- select * from Posts;
 -- insert into Posts
@@ -17,19 +17,47 @@ use forumData;
 -- values ('yd2am2019-11-14 15:09:47', 'yd2am', 1);
 
 -- get number of comments
-update Posts
-set Posts.CommentNo = (select count(CommentID) from Comments)
-where PostID = Posts.PostID;
+-- update Posts
+-- set Posts.CommentNo = (select count(CommentID) from Comments)
+-- where PostID = Posts.PostID;
 
 -- get number of likes
-update Posts
-set Posts.LikeNo = (select count(*) from Votes
-where Vote = 1)
-where PostID = Posts.PostID;
+-- update Posts
+-- set Posts.LikeNo = (select count(*) from Votes
+-- where Vote = 1)
+-- where PostID = Posts.PostID;
 
 -- get number of dislikes
-update Posts
-set Posts.DislikeNo = (select count(*) from Votes
-where Vote = -1)
-where PostID = Posts.PostID;
+-- update Posts
+-- set Posts.DislikeNo = (select count(*) from Votes
+-- where Vote = -1)
+-- where PostID = Posts.PostID;
 
+Delimiter $$
+CREATE  PROCEDURE `AddData`(
+    IN user_id VARCHAR(255),
+    IN user_name VARCHAR(255),
+    IN post_title VARCHAR(255), 
+    IN post_details VARCHAR(255)
+)
+BEGIN
+
+  INSERT INTO Posts
+  (
+		UserID,
+  		UserName,
+  		Title,
+  		Content,
+  		PostTime
+  )
+
+  VALUES ( 
+  		user_id,
+  		user_name,
+        post_title,
+  		post_details,
+  		CURRENT_TIMESTAMP
+	);
+ 
+END$$
+Delimiter ;

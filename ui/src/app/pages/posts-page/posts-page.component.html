@@ -8,51 +8,48 @@
          (click)="onSelect(post)">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{post.title}}</h5>
-          <div *ngIf="selectedPost && post.title === selectedPost.title">
-            <h6>{{selectedPost.content}}</h6>
+          <h5 class="card-title">{{post.Title}} by {{post.UserName}}</h5>
+          <div *ngIf="selectedPost && post.Title === selectedPost.Title">
+            <h6>{{selectedPost.Content}}</h6>
           </div>
-          <span class="card-text">{{post.likes}} likes
-<!--            <a href="#" class="card-link">-->
-            <span style="color: #ee4049;">
-              <span style="font-size: 20px;">
+          <span class="card-text">{{post.LikeNo}}
+            <span style="color: #ee4049; font-size: 15px;">
                 <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
               </span>
             </span>
-<!--            </a>-->
-          </span>
-          <br>
-          <span>{{post.comments}} comments
-<!--            <a href="#" class="card-link">-->
-            <span style="color: #62beee;">
-              <span style="font-size: 20px;">
+          <span class="card-text" style="padding-left: 20px">{{post.DislikeNo}}
+            <span style="color: #15252e; font-size: 15px;">
+                <fa-icon [icon]="['far', 'thumbs-down']"></fa-icon>
+              </span>
+            </span>
+          <span class="card-text" style="padding-left: 20px">{{post.CommentNo}}
+            <span style="color: #62beee; font-size: 15px;">
               <fa-icon [icon]="['far', 'comment-alt']"></fa-icon>
               </span>
             </span>
 <!--            </a>-->
-          </span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container align-content-center">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<!--  <div class="container align-content-center">-->
+<!--    <nav aria-label="Page navigation example">-->
+<!--      <ul class="pagination">-->
+<!--        <li class="page-item">-->
+<!--          <a class="page-link" href="#" aria-label="Previous">-->
+<!--            <span aria-hidden="true">&laquo;</span>-->
+<!--          </a>-->
+<!--        </li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--        <li class="page-item">-->
+<!--          <a class="page-link" href="#" aria-label="Next">-->
+<!--            <span aria-hidden="true">&raquo;</span>-->
+<!--          </a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </nav>-->
+<!--  </div>-->
 </div>
