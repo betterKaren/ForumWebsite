@@ -9,13 +9,15 @@ import { HttpClient } from '@angular/common/http';
 export class PostService {
   constructor(private http : HttpClient) { }
 
-  // submitPost(post) {
-  //   return this.http.post(`${this.url}addData.php`, JSON.stringify(post));
-  // }
+  PHP_API_SERVER = "http://127.0.0.1:8080";
 
   readPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/read.php`);
   }
+  
+  submitPost(post:Post):Observable<Post> {
+    return this.http.post<Post>(`${this.PHP_API_SERVER}/addData.php`, post);
+  }
 
-  PHP_API_SERVER = "http://127.0.0.1:8000";
+
 }

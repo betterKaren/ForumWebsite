@@ -10,6 +10,7 @@ import { FormsModule } from "@angular/forms";
 import { SharePageComponent } from './pages/share-page/share-page.component';
 import { PostsPageComponent } from './pages/posts-page/posts-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -32,6 +33,7 @@ library.add(fab);
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule
