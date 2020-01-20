@@ -2,27 +2,27 @@
   <div class="row justify-content-md-center">
     <h5 style="padding-top: 15px">Feel free to share your ideas!</h5>
   </div>
-  <div *ngFor="let post of posts">
+<!--  <div *ngFor="let post of posts">-->
   <div class="container justify-content-sm-center">
-    <form [formGroup]] #shareForm= "ngForm">
+    <form #shareForm= "ngForm">
         <div class="form-group">
           <label>UserID</label>
-          <input type="text" placeholder="Your UVa ID" required="" [(ngModule)]="post.UserID">
+          <input type="text" placeholder="Your UVa ID" required="" [(ngModel)]="post.UserID">
         </div>
         <div class="form-group">
           <label>UserName</label>
-          <input type="text" placeholder="User Name You Want to show" [(ngModule)]="post.UserName">
+          <input type="text" placeholder="User Name You Want to show" [(ngModel)]="post.UserName">
         </div>
         <label>Title</label>
-        <input type="text" placeholder="Post Title" required="" [(ngModule)]="post.Title">
+        <input type="text" placeholder="Post Title" required="" [(ngModel)]="post.Title">
       <div class="form-group">
         <label>Details</label>
-        <textarea placeholder="Post Details" rows="4" required="" [(ngModule)]="post.Content"></textarea>
+        <textarea placeholder="Post Details" rows="4" required="" [(ngModel)]="post.Content"></textarea>
       </div>
 
       <button type="button" class="btn btn-primary" style="float:left" (click)="submitForm(shareForm)">Submit</button>
 <!--      <button type="clear" class="btn btn-light" style="float:left;margin-left:10px;">Clear</button>-->
     </form>
   </div>
-</div>
-
+<!--</div>-->
+</div>>

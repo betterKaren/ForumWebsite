@@ -12,11 +12,11 @@ export class PostService {
   PHP_API_SERVER = "http://127.0.0.1:8080";
 
   readPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.PHP_API_SERVER}/read.php`);
+    return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/read.php`);
   }
-  
+
   submitPost(post:Post):Observable<Post> {
-    return this.http.post<Post>(`${this.PHP_API_SERVER}/addData.php`, post);
+    return this.http.post<Post>(`${this.PHP_API_SERVER}/api/share.php`, post);
   }
 
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
 import { PostService } from "../../posts/post.service";
 import { Post } from "../../posts/post";
 import { NgForm } from "@angular/forms";
