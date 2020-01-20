@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 // credentials will be used to connect database
 $host = 'localhost:3306';
 $username = "root";
-$password = "neversaydieB961025";
+$password = "";
 $dbname = 'forumData';
 
 $conn = new mysqli($host, $username, $password, $dbname);
