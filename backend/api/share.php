@@ -4,26 +4,26 @@ require 'dbConnection.php';
 // Get the posted data.
 $postdata = file_get_contents("php://input");
 
-//if(isset($postdata) && !empty($postdata)){
-  // extract the data
-$request = json_decode($postdata);
+if(isset($postdata) && !empty($postdata)) {
+    // extract the data
+    $request = json_decode($postdata);
 
-//  // validate
-//  if(trim($request->number) === '' || (float)$request->amount < 0)
-//    return http_response_code(400);
+    // validate
+    if(trim($request->userid) === '' || trim($request->title) === '')
+        return http_response_code(400);
 
-$userid = mysqli_real_escape_string($conn, trim($request->UserID));
-$username = mysqli_real_escape_string($conn, trim($request->UserName));
-$title = mysqli_real_escape_string($conn, trim($request->Title));
-$content = mysqli_real_escape_string($conn, trim($request->Content));
-$timestamp = date('Y-m-d H:i:s');
-$id = $userid . $timestamp;
+    $userid = mysqli_real_escape_string($conn, trim($request->UserID));
+    $username = mysqli_real_escape_string($conn, trim($request->UserName));
+    $title = mysqli_real_escape_string($conn, trim($request->Title));
+    $content = mysqli_real_escape_string($conn, trim($request->Content));
+    $timestamp = date('Y-m-d H:i:s');
+    $id = $userid . $timestamp;
 
-$sql = "INSERT INTO Posts(PostID, UserID, UserName, PostTime, Title, Content, LikeNo, DislikeNo, CommentNo)
+    $sql = "INSERT INTO Posts(PostID, UserID, UserName, PostTime, Title, Content, LikeNo, DislikeNo, CommentNo)
             VALUES ('{$id}', '{$userid}', '{$username}', '{$timestamp}', '{$title}', '{$content}', 0, 0, 0)";
 
-  if($conn->query($sql) == TRUE) {
-//    http_response_code(201);
+    if ($conn->query($sql) == TRUE) {
+        http_response_code(201);
 //    $post = [
 //      'UserID' => $userid,
 //      'UserName' => $username,
@@ -31,10 +31,9 @@ $sql = "INSERT INTO Posts(PostID, UserID, UserName, PostTime, Title, Content, Li
 //      'Content' => $content
 //      ];
 //    echo json_encode($post);
-//      echo "posted!";
-  }
-  else {
+    } else {
 //    http_response_code(422);
-      echo $conn->error;
-  }
+        echo $conn->error;
+    }
+}
 
