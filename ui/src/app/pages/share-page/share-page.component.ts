@@ -34,10 +34,11 @@ export class SharePageComponent implements OnInit {
   }
 
   submitForm(form){
-
-    this.postService.submitPost(form.value).subscribe((post: Post) =>{
-      console.log("New post generated: ", post);
-    });
-    this.postForm.reset();
+    if(form.valid) {
+      this.postService.submitPost(form.value).subscribe((post: Post) =>{
+        console.log("New post generated: ", post);
+      });
+      this.postForm.reset();
+    }
   }
 }
