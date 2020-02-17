@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from "../../posts/post.service";
 import { Post } from "../../posts/post";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 
 @Component({
@@ -12,7 +12,7 @@ import { FormBuilder } from "@angular/forms";
 
 export class SharePageComponent implements OnInit {
   posts: Post[];
-  postForm;
+  postForm: FormGroup;
 
   constructor(
     private postService : PostService,
@@ -24,18 +24,18 @@ export class SharePageComponent implements OnInit {
     this.postService.readPosts().subscribe((posts: Post[])=> {
       this.posts = posts;
       this.postForm = this.formBuilder.group({
-        UserID: '',
+        UserID: [null, Validators.required],
         UserName: '',
-        Title: '',
+        Title: [null, Validators.required],
         Content: ''
       });
       console.log(this.posts);
     })
   }
 
-  submitForm(form){
-    if(form.valid) {
-      this.postService.submitPost(form.value).subscribe((post: Post) =>{
+  submitForm(form) {
+    if (form.valid) {
+      this.postService.submitPost(form.value).subscribe((post: Post) => {
         console.log("New post generated: ", post);
       });
       this.postForm.reset();

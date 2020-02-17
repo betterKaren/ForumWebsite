@@ -1,5 +1,6 @@
 <meta charset = "UTF-8" />
 <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
 <div class="app-share-page">
   <div class="container-fluid text-center">
     <div style="padding-top: 15px; font-family: Oswald; font-size: 30px; color: navy">Feel free to share your ideas!
@@ -7,7 +8,7 @@
   </div>
 
   <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
-      <form ngNativeValidate [formGroup]="postForm" (ngSubmit)="submitForm(postForm.value)">
+      <form ngNativeValidate [formGroup]="postForm">
           <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">UserID *</label>
           <input class="form-control" name="UserID" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"
                  required>
@@ -20,29 +21,14 @@
           <input class="form-control" id="Title" type="text" placeholder="Post Title" formControlName="Title" required>
 
           <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">Details</label>
-          <textarea class="form-control" id="Details" type="text" placeholder="Post Details" rows="4"
-                    formControlName="Content"></textarea>
+          <input class="form-control" id="Details" type="text" placeholder="Post Details" rows="4"
+                    formControlName="Content">
 
         <div style="padding-top: 10px">
           <button class="btn btn-primary" type="submit" (click)="submitForm(postForm)">Submit</button>
           <input  class="btn btn-light" type="reset" style="margin-left: 5px">
         </div>
-
-        <!--    <form #shareForm= "ngForm">-->
-        <!--        <div class="form-group">-->
-        <!--          <label>UserID</label>-->
-        <!--          <input type="text" placeholder="Your UVa ID" required="" [(ngModel)]="post.UserID">-->
-        <!--        </div>-->
-        <!--        <div class="form-group">-->
-        <!--          <label>UserName</label>-->
-        <!--          <input type="text" placeholder="User Name You Want to show" [(ngModel)]="post.UserName">-->
-        <!--        </div>-->
-        <!--        <label>Title</label>-->
-        <!--        <input type="text" placeholder="Post Title" required="" [(ngModel)]="post.Title">-->
-        <!--      <div class="form-group">-->
-        <!--        <label>Details</label>-->
-        <!--        <textarea placeholder="Post Details" rows="4" required="" [(ngModel)]="post.Content"></textarea>-->
-        <!--      </div>-->
       </form>
   </div>
+
 </div>
