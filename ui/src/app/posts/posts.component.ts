@@ -9,18 +9,17 @@ import { PostService } from "./post.service";
 })
 export class PostsComponent implements OnInit {
   posts: Post[];
-  selectedPost : Post;
+  selectedPost: Post;
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.getPosts();
+    this.postService.readSortedPosts().subscribe((posts: Post[])=> {
+    this.posts = posts;
+    console.log(this.posts);
+  })
   }
 
   onSelect(post: Post): void {
     this.selectedPost = post;
-  }
-
-  getPosts(): void {
-    this.postService.readPosts().subscribe(posts => this.posts = posts);
   }
 }

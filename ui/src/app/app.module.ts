@@ -17,6 +17,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { CommentsComponent } from './comments/comments.component';
 library.add(fas);
 library.add(far);
 library.add(fab);
@@ -28,7 +29,8 @@ library.add(fab);
     HeaderComponent,
     PostsComponent,
     SharePageComponent,
-    PostsPageComponent
+    PostsPageComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

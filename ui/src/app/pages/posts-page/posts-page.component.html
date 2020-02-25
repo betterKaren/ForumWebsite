@@ -8,37 +8,39 @@
     <div style="padding-top: 15px; font-family: Oswald; font-size: 30px; color: navy">All Posts</div>
   </div>
 
-  <div class="container align-content-center">
+  <div class="container align-content-center" style="padding-top: 15px">
     <div *ngFor="let post of posts"
          [class.selected]="post === selectedPost"
          (click)="onSelect(post)">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{post.Title}}</h5>
+          <h4 class="card-title">{{post.Title}}</h4>
+          <div style="font-size: 10px">Posted at: {{post.PostTime}}
+            by {{post.UserName}}</div>
+
           <div *ngIf="selectedPost && post.PostID === selectedPost.PostID">
-            <div style="font-size: 18px">{{selectedPost.Content}}</div>
-            <div style="font-size: 12px; padding-top: 5px">Posted at: {{selectedPost.PostTime}}
-              by {{post.UserName}}</div>
+            <div style="font-size: 16px">{{selectedPost.Content}}</div>
+          <span class="card-text" style="font-size: 14px">
+            <button class="btn btn-link" style="color: #ee4049; padding-left: 0px; padding-right: 3px">
+              <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon></button>{{post.LikeNo}}
+            </span>
+          <span class="card-text" style="padding-left: 12px; font-size: 14px">
+            <button class="btn btn-link" style="color: #15252e; padding-right: 3px">
+              <fa-icon [icon]="['far', 'thumbs-down']"></fa-icon></button>{{post.DislikeNo}}
+          </span>
+          <span class="card-text" style="padding-left: 10px; font-size: 14px">
+            <button class="btn btn-link" style="color: #62beee; padding-right: 4px">
+              <fa-icon [icon]="['far', 'comment-alt']" (click)=toggle()></fa-icon></button>{{post.CommentNo}}
+            <ng-container *ngIf="showComments">
+              <app-comments></app-comments>
+            </ng-container>
+            </span>
           </div>
-          <span class="card-text">{{post.LikeNo}}
-            <span style="color: #ee4049; font-size: 15px;">
-                <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
-              </span>
-            </span>
-          <span class="card-text" style="padding-left: 20px">{{post.DislikeNo}}
-            <span style="color: #15252e; font-size: 15px;">
-                <fa-icon [icon]="['far', 'thumbs-down']"></fa-icon>
-              </span>
-            </span>
-          <span class="card-text" style="padding-left: 20px">{{post.CommentNo}}
-            <span style="color: #62beee; font-size: 15px;">
-              <fa-icon [icon]="['far', 'comment-alt']"></fa-icon>
-              </span>
-            </span>
         </div>
       </div>
     </div>
   </div>
+
 
   <!--  <div class="container align-content-center">-->
   <!--    <nav aria-label="Page navigation example">-->

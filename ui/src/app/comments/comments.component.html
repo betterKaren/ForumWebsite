@@ -1,0 +1,27 @@
+<div class="app-comments">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">hard coded comment1</li>
+    <li class="list-group-item">hard coded comment2</li>
+  </ul>
+
+  <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
+    <form ngNativeValidate [formControlName]="commentForm">
+      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserID *</label>
+      <input class="form-control" name="UserID" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"
+             style="font-size: 12px" required>
+
+      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserName</label>
+      <input class="form-control" id="UserName" type="text" placeholder="User Name You Want to show"
+             style="font-size: 12px" formControlName="UserName">
+
+      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">Comment *</label>
+      <input class="form-control" id="Comment" type="text" placeholder="Please Share Your Comment" formControlName="Comment"
+             style="font-size: 12px" required>
+
+      <div style="padding-top: 10px">
+        <button class="btn btn-primary" type="submit" style="font-size: 12px" (click)="submitForm(commentForm)">Submit</button>
+        <input  class="btn btn-light" type="reset" style="margin-left: 5px; font-size: 12px">
+      </div>
+    </form>
+  </div>
+</div>

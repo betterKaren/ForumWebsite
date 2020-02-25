@@ -10,6 +10,10 @@ export class PostService {
   constructor(private http : HttpClient) { }
 
   PHP_API_SERVER = "http://127.0.0.1:8080";
+  readSortedPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/sortedRead.php`);
+  }
+
 
   readPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/read.php`);
@@ -18,6 +22,4 @@ export class PostService {
   submitPost(post:Post):Observable<Post> {
     return this.http.post<Post>(`${this.PHP_API_SERVER}/api/share.php`, post);
   }
-
-
 }

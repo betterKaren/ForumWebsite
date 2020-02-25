@@ -21,8 +21,8 @@
           <input class="form-control" id="Title" type="text" placeholder="Post Title" formControlName="Title" required>
 
           <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">Details</label>
-          <input class="form-control" id="Details" type="text" placeholder="Post Details" rows="4"
-                    formControlName="Content">
+          <textarea class="form-control" id="Details" type="text" placeholder="Post Details" rows="4"
+                    formControlName="Content"></textarea>
 
         <div style="padding-top: 10px">
           <button class="btn btn-primary" type="submit" (click)="submitForm(postForm)">Submit</button>
