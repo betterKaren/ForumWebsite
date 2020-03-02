@@ -9,11 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class PostService {
   constructor(private http : HttpClient) { }
 
-  PHP_API_SERVER = "http://127.0.0.1:8080";
+  PHP_API_SERVER = "http://localhost:8000";
   readSortedPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/sortedRead.php`);
   }
-
 
   readPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/read.php`);
@@ -22,4 +21,14 @@ export class PostService {
   submitPost(post:Post):Observable<Post> {
     return this.http.post<Post>(`${this.PHP_API_SERVER}/api/share.php`, post);
   }
+
+  upVote(string):Observable<Post> {
+    return this.http.post<Post>(`${this.PHP_API_SERVER}/api/upvote.php`, string);
+  }
+
+  downVote(string):Observable<Post> {
+    return this.http.post<Post>(`${this.PHP_API_SERVER}/api/downvote.php`, string);
+  }
 }
+
+

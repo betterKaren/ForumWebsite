@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
     this.postService.readSortedPosts().subscribe((posts: Post[])=> {
     this.posts = posts;
     console.log(this.posts);
-  })
+  });
   }
 
   onSelect(post: Post): void {

@@ -25,10 +25,29 @@ export class PostsPageComponent implements OnInit {
   }
 
   onSelect(post: Post): void {
+    console.log("onselect");
     this.selectedPost = post;
+  }
+
+  onBlur(): void {
+    this.showComments = false;
+    console.log("onblur, showComments = " + this.showComments);
   }
 
   toggle(): void {
     this.showComments = !this.showComments;
+    console.log("toggle, showComments = " + this.showComments);
+  }
+
+  like(post: Post): void {
+    this.postService.upVote(post.PostID).subscribe((post:Post) => {
+      console.log("Like!");
+    });
+  }
+
+  unlike(post: Post): void {
+    this.postService.downVote(post.PostID).subscribe((post:Post) => {
+      console.log("UnLike!");
+    });
   }
 }
