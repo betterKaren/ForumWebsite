@@ -4,13 +4,9 @@ require 'dbConnection.php';
 // Get the posted data.
 $postdata = file_get_contents("php://input");
 
-if(isset($postdata) && !empty($postdata)) {
+if (isset($postdata) && !empty($postdata)) {
     // extract the data
     $request = json_decode($postdata);
-
-    // validate
-    if(trim($request->userid) === '' || trim($request->title) === '')
-        return http_response_code(400);
 
     $userid = mysqli_real_escape_string($conn, trim($request->UserID));
     $username = mysqli_real_escape_string($conn, trim($request->UserName));
@@ -19,11 +15,15 @@ if(isset($postdata) && !empty($postdata)) {
     $timestamp = date('Y-m-d H:i:s');
     $id = $userid . $timestamp;
 
+    // validate
+    if (trim($request->userid) === null || trim($request->title) === null)
+        return http_response_code(404);
+
     $sql = "INSERT INTO Posts(PostID, UserID, UserName, PostTime, Title, Content, LikeNo, DislikeNo, CommentNo)
             VALUES ('{$id}', '{$userid}', '{$username}', '{$timestamp}', '{$title}', '{$content}', 0, 0, 0)";
 
     if ($conn->query($sql) == TRUE) {
-        http_response_code(201);
+        http_response_code(200);
 //    $post = [
 //      'UserID' => $userid,
 //      'UserName' => $username,
@@ -31,9 +31,8 @@ if(isset($postdata) && !empty($postdata)) {
 //      'Content' => $content
 //      ];
 //    echo json_encode($post);
-    } else {
+//    } else {
 //    http_response_code(422);
-        echo $conn->error;
     }
 }
 

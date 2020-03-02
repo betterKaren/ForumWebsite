@@ -1,8 +1,7 @@
 <?php
 require 'dbConnection.php';
 
-// fetch the data of posts and return as JSON response
-$sql = "SELECT * FROM Posts";
+$sql = "SELECT * FROM Posts ORDER BY PostTime DESC";
 $result = $conn->query($sql);
 $posts = [];
 $i = 0;
@@ -23,6 +22,6 @@ if ($result->num_rows > 0) {
     }
     echo json_encode($posts);
 } else {
-    http_response_code(404);
+    http_response_code(403);
     echo mysqli_error($conn);
 }
