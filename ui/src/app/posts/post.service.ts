@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class PostService {
   constructor(private http : HttpClient) { }
 
-  PHP_API_SERVER = "http://localhost:8000";
+  PHP_API_SERVER = "http://localhost:8080";
   readSortedPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/sortedRead.php`);
   }

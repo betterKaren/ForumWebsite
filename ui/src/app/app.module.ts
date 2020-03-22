@@ -18,6 +18,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CommentsComponent } from './comments/comments.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
+
 library.add(fas);
 library.add(far);
 library.add(fab);
@@ -38,7 +40,8 @@ library.add(fab);
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

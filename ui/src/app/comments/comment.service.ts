@@ -20,6 +20,6 @@ export class CommentService {
   }
 
   submitComment(comment:Comment):Observable<Comment> {
-    return this.http.post<Comment>(`${this.PHP_API_SERVER}/api/shareComment.php`, comment);
+    return this.http.post<Comment>(`${this.PHP_API_SERVER}/api/comment.php`, comment);
   }
 }

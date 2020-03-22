@@ -11,6 +11,7 @@ export class PostsPageComponent implements OnInit {
   selectedPost: Post;
   posts: Post[];
   showComments: boolean;
+  prevSelectedPost: Post;
 
   constructor(
     private postService : PostService
@@ -22,16 +23,16 @@ export class PostsPageComponent implements OnInit {
       console.log(this.posts);
     });
     this.showComments = false;
+    this.prevSelectedPost = null;
   }
 
   onSelect(post: Post): void {
     console.log("onselect");
     this.selectedPost = post;
-  }
-
-  onBlur(): void {
-    this.showComments = false;
-    console.log("onblur, showComments = " + this.showComments);
+    if (this.prevSelectedPost != this.selectedPost) {
+      this.showComments = false;
+    }
+    this.prevSelectedPost = this.selectedPost;
   }
 
   toggle(): void {
@@ -43,11 +44,20 @@ export class PostsPageComponent implements OnInit {
     this.postService.upVote(post.PostID).subscribe((post:Post) => {
       console.log("Like!");
     });
+    window.location.reload();
   }
 
   unlike(post: Post): void {
     this.postService.downVote(post.PostID).subscribe((post:Post) => {
       console.log("UnLike!");
     });
+    window.location.reload();
+  }
+
+  tooltipOptions = {
+    'placement': 'bottom',
+    'show-delay': '0',
+    'hide-delay': '0',
+    'theme': 'light'
   }
 }
