@@ -11,12 +11,12 @@ if (isset($postdata) && !empty($postdata)) {
     $userid = mysqli_real_escape_string($conn, trim($request->UserID));
     $username = mysqli_real_escape_string($conn, trim($request->UserName));
     $title = mysqli_real_escape_string($conn, trim($request->Title));
-    $content = mysqli_real_escape_string($conn, trim($request->Content));
+    $content = mysqli_real_escape_string($conn, trim($request->Details));
     $timestamp = date('Y-m-d H:i:s');
     $id = $userid . $timestamp;
 
     // validate
-    if (trim($request->userid) === null || trim($request->title) === null)
+    if (trim($userid) === null || trim($title) === null)
         return http_response_code(404);
 
     $sql = "INSERT INTO Posts(PostID, UserID, UserName, PostTime, Title, Content, LikeNo, DislikeNo, CommentNo)
@@ -24,15 +24,17 @@ if (isset($postdata) && !empty($postdata)) {
 
     if ($conn->query($sql) == TRUE) {
         http_response_code(200);
-//    $post = [
-//      'UserID' => $userid,
-//      'UserName' => $username,
-//      'Title' => $title,
-//      'Content' => $content
-//      ];
-//    echo json_encode($post);
-//    } else {
-//    http_response_code(422);
+
+        $post = [
+          'UserID' => $userid,
+          'UserName' => $username,
+          'Title' => $title,
+          'Content' => $content
+          ];
+        echo json_encode($post);
+    }
+    else {
+    http_response_code(400);
     }
 }
 
