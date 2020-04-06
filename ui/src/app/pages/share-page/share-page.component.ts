@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from "../../posts/post.service";
 import { Post } from "../../posts/post";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-share-page',
@@ -31,14 +31,22 @@ export class SharePageComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.postForm = new FormGroup({
+      UserID: new FormControl(),
+      UserName: new FormControl(),
+      Title: new FormControl(),
+      Details: new FormControl()
+    });
   }
 
   submitForm(form) {
+    console.log(form);
+
     if (form.valid) {
       this.postService.submitPost(form.value).subscribe((post: Post) => {
         console.log("New post generated: ", post);
       });
-      this.postForm.reset();
+      // this.postForm.reset();
     }
   }
 }

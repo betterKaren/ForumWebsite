@@ -1,27 +1,43 @@
 <div class="app-comments">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">hard coded comment1</li>
-    <li class="list-group-item">hard coded comment2</li>
-  </ul>
-
   <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
-    <form ngNativeValidate [formControlName]="commentForm">
+    <form ngNativeValidate [formGroup]="commentForm">
       <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserID *</label>
-      <input class="form-control" name="UserID" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"
-             style="font-size: 12px" required>
+      <input class="form-control" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"
+             style="font-size: 14px" required>
 
       <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserName</label>
       <input class="form-control" id="UserName" type="text" placeholder="User Name You Want to show"
-             style="font-size: 12px" formControlName="UserName">
+             formControlName="UserName" style="font-size: 14px">
 
-      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">Comment *</label>
-      <input class="form-control" id="CommentContent" type="text" placeholder="Please Share Your Comment" formControlName="Comment"
-             style="font-size: 12px" required>
+      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">Details</label>
+      <textarea class="form-control" id="CommentContent" type="text" placeholder="Comment Details" rows="2"
+                formControlName="CommentContent" style="font-size: 14px"></textarea>
 
       <div style="padding-top: 10px">
-        <button class="btn btn-primary" type="submit" style="font-size: 12px" (click)="submitForm(commentForm)">Submit</button>
-        <input  class="btn btn-light" type="reset" style="margin-left: 5px; font-size: 12px">
+        <button class="btn btn-primary" type="submit" style="font-size: 14px" (click)="submitComment(commentForm)">Submit</button>
+        <input  class="btn btn-light" type="reset" style="margin-left: 5px; font-size: 14px">
       </div>
     </form>
   </div>
+
+<!--  <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">-->
+<!--    <form ngNativeValidate [formControlName]="commentForm">-->
+<!--      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserID *</label>-->
+<!--      <input class="form-control" name="UserID" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"-->
+<!--             style="font-size: 12px" required>-->
+
+<!--      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">UserName</label>-->
+<!--      <input class="form-control" id="UserName" type="text" placeholder="User Name You Want to show"-->
+<!--             style="font-size: 12px" formControlName="UserName">-->
+
+<!--      <label class="col-form-label" style="font-size: 14px; font-family: Verdana; color: #182e18">Comment *</label>-->
+<!--      <input class="form-control" id="CommentContent" type="text" placeholder="Please Share Your Comment" formControlName="Comment"-->
+<!--             style="font-size: 12px" required>-->
+
+<!--      <div style="padding-top: 10px">-->
+<!--        <button class="btn btn-primary" type="submit" style="font-size: 12px" (click)="submitForm(commentForm)">Submit</button>-->
+<!--        <input  class="btn btn-light" type="reset" style="margin-left: 5px; font-size: 12px">-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
 </div>

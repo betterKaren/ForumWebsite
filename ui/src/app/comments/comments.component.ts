@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comment } from './comment';
 import { CommentService } from "./comment.service";
-import { FormControl } from "@angular/forms";
+import { FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-comments',
@@ -10,19 +10,24 @@ import { FormControl } from "@angular/forms";
 })
 export class CommentsComponent implements OnInit {
   comments: Comment[];
-  commentForm = new FormControl();
-
+  commentForm: FormGroup;
   constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
+    this.commentForm = new FormGroup({
+      UserID: new FormControl(),
+      UserName: new FormControl(),
+      CommentContent: new FormControl()
+    });
   }
 
-  submitForm(form) {
+  submitComment(form) {
     if(form.valid) {
-      this.commentService.submitComment(form.value).subscribe((comment: Comment) => {
-        console.log("New comment!", comment);
+      this.commentService.SubmitComment(form.value).subscribe((comment: Comment) => {
+        console.log(comment);
       });
-      this.commentForm.reset();
+      // this.commentForm.reset();
+      window.location.reload();
     }
   }
 }
