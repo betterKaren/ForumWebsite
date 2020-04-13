@@ -1,3 +1,33 @@
 /*@media screen and (min-width: 768px) and (max-width: 960px){*/
 
 /*}*/
+
+#textboxLabel{
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  color: #182e18;
+}
+
+#UserID{
+  font-size: 14px;
+}
+
+#UserName{
+  font-size: 14px;
+}
+
+#Title{
+  font-size: 14px;
+}
+
+#Details{
+  font-size: 14px;
+}
+
+#submitButton{
+  font-size: 14px;
+}
+
+#resetButton{
+  font-size: 14px;
+}

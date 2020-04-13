@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from "../../posts/post";
 import { PostService } from "../../posts/post.service";
 import { Comment } from "../../comments/comment";
-import { CommentsComponent } from "../../comments/comments.component";
 import { CommentService } from "../../comments/comment.service";
+import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Component({
   selector: 'app-posts-page',
@@ -17,7 +17,7 @@ export class PostsPageComponent implements OnInit {
   showShareComments: boolean;
   prevSelectedPost: Post;
   comments: Comment[];
-  commentComponent: CommentsComponent;
+  sortOption: string;
 
   constructor(
     private postService : PostService,
@@ -33,6 +33,22 @@ export class PostsPageComponent implements OnInit {
     this.prevSelectedPost = null;
     this.showShareComments = false;
   }
+
+  sortPosts(): void {
+    console.log(this.sortOption);
+    this.postService.readPosts().subscribe((posts: Post[])=> {
+      if (this.sortOption == "Most Recent") {
+        // this.posts = posts.sort((a, b) => );
+      }
+      if (this.sortOption == "Most Likes") {
+        this.posts = posts.sort((a, b) => b.LikeNo - a.LikeNo);
+      }
+      if (this.sortOption == "Most Comments") {
+        this.posts = posts.sort((a, b) => b.CommentNo - a.CommentNo);
+      }
+    });
+  }
+
 
   onSelect(post: Post): void {
     console.log("onselect");
@@ -81,4 +97,10 @@ export class PostsPageComponent implements OnInit {
     'hide-delay': '0',
     'theme': 'light'
   }
+
+  sortOptions = [
+    { name: "Most Recent", value: 1 },
+    { name: "Most Likes", value: 2 },
+    { name: "Most Comments", value: 3}
+  ]
 }

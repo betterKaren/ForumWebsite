@@ -9,24 +9,24 @@
 
   <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
       <form ngNativeValidate [formGroup]="postForm">
-          <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">UserID *</label>
+          <label class="col-form-label" id="textboxLabel">UserID *</label>
           <input class="form-control" id="UserID" type="text" placeholder="Your UVa ID" formControlName="UserID"
                  required>
 
-          <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">UserName</label>
+          <label class="col-form-label" id="textboxLabel">UserName</label>
           <input class="form-control" id="UserName" type="text" placeholder="User Name You Want to show"
                  formControlName="UserName">
 
-          <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">Title *</label>
+          <label class="col-form-label" id="textboxLabel">Title *</label>
           <input class="form-control" id="Title" type="text" placeholder="Post Title" formControlName="Title" required>
 
-          <label class="col-form-label" style="font-size: 18px; font-family: Verdana; color: #182e18">Details</label>
+          <label class="col-form-label" id="textboxLabel">Details</label>
           <textarea class="form-control" id="Details" type="text" placeholder="Post Details" rows="4"
                     formControlName="Details"></textarea>
 
         <div style="padding-top: 10px">
-          <button class="btn btn-primary" type="submit" (click)="submitForm(postForm)">Submit</button>
-          <input  class="btn btn-light" type="reset" style="margin-left: 5px">
+          <button class="btn btn-primary" id="submitButton" type="submit" (click)="submitForm(postForm)">Submit</button>
+          <input  class="btn btn-light" id="resetButton" type="reset" style="margin-left: 5px">
         </div>
       </form>
   </div>
