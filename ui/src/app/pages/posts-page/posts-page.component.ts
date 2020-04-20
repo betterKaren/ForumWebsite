@@ -38,7 +38,9 @@ export class PostsPageComponent implements OnInit {
     console.log(this.sortOption);
     this.postService.readPosts().subscribe((posts: Post[])=> {
       if (this.sortOption == "Most Recent") {
-        // this.posts = posts.sort((a, b) => );
+        this.postService.readSortedPosts().subscribe((posts: Post[]) => {
+          this.posts = posts;
+        });
       }
       if (this.sortOption == "Most Likes") {
         this.posts = posts.sort((a, b) => b.LikeNo - a.LikeNo);
@@ -48,7 +50,6 @@ export class PostsPageComponent implements OnInit {
       }
     });
   }
-
 
   onSelect(post: Post): void {
     console.log("onselect");
@@ -72,6 +73,11 @@ export class PostsPageComponent implements OnInit {
     });
   }
 
+  toggleShareComment(post: Post): void {
+    this.showShareComments = !this.showShareComments;
+    this.commentService.getPostID(post.PostID);
+  }
+
   like(post: Post): void {
     this.postService.upVote(post.PostID).subscribe((post:Post) => {
       console.log("Like!");
@@ -84,11 +90,6 @@ export class PostsPageComponent implements OnInit {
       console.log("UnLike!");
     });
     window.location.reload();
-  }
-
-  toggleShareComment(post: Post): void {
-    this.showShareComments = !this.showShareComments;
-    this.commentService.getPostID(post.PostID);
   }
 
   tooltipOptions = {
