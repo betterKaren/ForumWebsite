@@ -30,7 +30,7 @@ export class PostService {
     return this.http.post<Post>(`${this.PHP_API_SERVER}/api/downvote.php`, string);
   }
 
-  searchPosts(query): Observable<Post[]> {
+  searchPosts(query): Observable<Post[]>{
     let input = query.query;
     console.log(input);
     return this.http.get<Post[]>(`${this.PHP_API_SERVER}/api/search.php?input=` + input);
