@@ -9,14 +9,12 @@
     <div style="padding-top: 15px; font-family: Oswald; font-size: 30px; color: navy">All Posts</div>
   </div>
 
-
   <!-- Sort Method Selector -->
   <div class="container align-items-center">
     Show as: <select [(ngModel)]="sortOption" (change)="sortPosts()">
       <option *ngFor="let o of sortOptions">{{o.name}}</option>
     </select>
   </div>
-
 
   <div class="container align-content-center" style="padding-top: 15px">
     <div *ngFor="let post of posts" (click)="onSelect(post)" [class.selected]="post === selectedPost">
@@ -51,7 +49,6 @@
                     style="color: rgba(144,79,88,0.85); padding-right: 4px">
               <fa-icon [icon]="['far', 'comment-alt']" (click)=toggleShareComment(selectedPost)></fa-icon></button>
             </span>
-
 
             <!--showing up all previous comments-->
             <ng-container *ngIf="showComments">

@@ -3,7 +3,6 @@ import { Post } from "../../posts/post";
 import { PostService } from "../../posts/post.service";
 import { Comment } from "../../comments/comment";
 import { CommentService } from "../../comments/comment.service";
-import {toNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Component({
   selector: 'app-posts-page',

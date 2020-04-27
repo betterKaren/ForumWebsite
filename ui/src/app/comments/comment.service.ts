@@ -12,7 +12,7 @@ export class CommentService {
 
   PHP_API_SERVER = "http://localhost:8080";
   readComments(PostID): Observable<Comment[]> {
-    console.log(PostID);
+    // console.log(PostID);
     return this.http.get<Comment[]>(`${this.PHP_API_SERVER}/api/readComment.php?PostID=` + PostID);
   }
 
